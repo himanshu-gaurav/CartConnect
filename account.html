@@ -1,0 +1,191 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+
+</head>
+<body>
+
+
+    <div class="header"> 
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Products </a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Contact</a></li>
+                        <li><a href="">Account</a></li>
+                    </ul>
+                </nav>
+
+                <img src="https://png.pngtree.com/element_our/png/20181031/shopping-cart-png_224349.jpg" width="30px" height="30px">
+            
+                </div>
+</div>
+
+
+
+<!----account page------>
+<div class="account-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <img src="https://cdn-icons-png.flaticon.com/512/295/295128.png">
+
+
+            </div>
+            <div class="col-2">
+                <div class="form-container">
+                    <div class="form-btn">
+                        <span onclick="login()">Login</span>
+                        <span onclick="register()">Register</span>
+                        <hr id ="Indicator">
+                    </div>
+
+                    <form id="LoginForm">
+
+                        <input type="text" placeholder="Username">
+                        <input type="password" placeholder="Password">
+                        <button type="submit" class="btn" id=""><a href="index.html">Login</a></button>
+                        
+                    </form>
+                    <form id="RegForm">
+
+                     <form>
+                        <label for="username"><b>Username</b></label>
+                        <input type="text" placeholder="Username" id="username" required>
+                        <label for="e-mail"><b> E-mail</b></label>
+                         <input type="e-mail" placeholder="E-mail id" id="e-mail" required>
+                         <label for="password"><b>Password</b></label>
+                           <input type="password" placeholder="Password" id="password" required>
+                          <button type="button" value="login" id="Register"><a href="index.html">Register</a></button>
+            
+              
+                  
+                   
+                 
+                    </form>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+             
+
+
+    
+</body>
+
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+    import { getDatabase } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyA-kC7_sLfLQeLm64NsJVfsgNBWqr80vBA",
+      authDomain: "saas-authentication-da3fc.firebaseapp.com",
+      databaseURL: "https://saas-authentication-da3fc-default-rtdb.firebaseio.com",
+      projectId: "saas-authentication-da3fc",
+      storageBucket: "saas-authentication-da3fc.appspot.com",
+      messagingSenderId: "345675112270",
+      appId: "1:345675112270:web:bd87ab01453f05e9d5081f"
+    };
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth(app);
+
+
+    Register.addEventListener('click',(e) => {
+    try {
+        console.log(11);
+        var email = document.getElementById("e-mail").value;
+        var password = document.getElementById("password").value;
+        var username = document.getElementById("username").value;
+        console.log(email,password,username);
+        createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+        // Signed in 
+        console.log("hello");
+        const user = userCredential.user;
+
+        alert('user created!');
+        // ...
+        })
+     .catch((error) => {
+       const errorCode = error.code;
+       const errorMessage = error.message;
+       console.log("hello2");
+
+       alert(errorMessage);
+     // ..
+     });
+    } catch (error) {
+        console.log({error})
+    }
+
+ });
+
+  </script
+
+</html>
+
+
+
+
+
+
+
+
+
+  <!----js for toggle Form------->
+
+
+<script>
+
+var LoginForm = document.getElementById("LoginForm");
+var RegForm = document.getElementById("RegForm");
+var Indicator= document.getElementById("Indicator");
+
+function register(){
+    RegForm.style.transform="translateX(0px)";
+    LoginForm.style.transform="translateX(0px)";
+    Indicator.style.transform="translateX(100px)";
+
+}
+function login(){
+     RegForm.style.transform="translateX(300px)";
+    LoginForm.style.transform="translateX(300px)";
+     Indicator.style.transform="translateX(0px)";
+
+}
+
+
+
+</script>
+
+</html>
